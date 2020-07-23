@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 20:52:34 by home              #+#    #+#             */
-/*   Updated: 2020/07/23 00:21:53 by home             ###   ########.fr       */
+/*   Updated: 2020/07/23 00:33:59 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,34 @@ void	slide_board(int	*board, int action)
 	slide_line(board, action, 3 * row_active, 3 * col_active, delta);
 }
 
+void	spawn_tiles(int *board)
+{
+	int	i;
+	int	spawn_chance;
+
+	i = 0;
+	while (i < 16)
+	{
+		if (board[i] == 0)
+		{
+			spawn_chance = rand() % 10;
+			if (spawn_chance < 2)
+				board[i] = 2;
+			else if (spawn_chance < 3)
+				board[i] = 4;
+		}
+		i++;
+	}
+}
+
 void	update_game_state(t_game_context *game_state)
 {
 
 	if (game_state->action != NONE)
+	{
 		slide_board(game_state->board, game_state->action);
+		spawn_tiles(game_state->board);
+	}
 
 	game_state->action = NONE;
 }
