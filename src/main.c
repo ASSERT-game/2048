@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/07/06 20:04:28 by home             ###   ########.fr       */
+/*   Updated: 2020/07/22 19:41:59 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@ void	game_context_initialize(t_game_context *game_state, t_display *display)
 {
 	game_state->active = true;
 
-	// game_state->texture = IMG_LoadTexture(display->renderer, "");
-	// game_state->src_rect = carve__texture();
+	game_state->texture = IMG_LoadTexture(display->renderer, "2048_texture.png");
+	game_state->src_rect = carve__texture();
 
-	game_state->ticks = 0;
 	game_state->game_over = false;
 
-	// srand(time(NULL));
-	(void)display;
+	game_state->action = NONE;
+
+	bzero(game_state->board, sizeof(game_state->board));
+
+	srand(time(NULL));
 }
 
 int	main(void)

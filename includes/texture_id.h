@@ -6,13 +6,14 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 19:59:20 by home              #+#    #+#             */
-/*   Updated: 2020/07/06 19:55:34 by home             ###   ########.fr       */
+/*   Updated: 2020/07/22 19:24:06 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEXTURE_H
 # define TEXTURE_H
 
-
+# define NONE (0)
+# define TILE (0)
 
 #endif

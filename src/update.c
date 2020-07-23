@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 20:52:34 by home              #+#    #+#             */
-/*   Updated: 2020/07/06 20:02:27 by home             ###   ########.fr       */
+/*   Updated: 2020/07/22 19:41:26 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void		update_game_state(t_game_context *game_state)
 {
-	game_state->ticks++;
+
+	game_state->action = NONE;
 }
