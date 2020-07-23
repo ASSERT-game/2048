@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/07/23 00:24:03 by home             ###   ########.fr       */
+/*   Updated: 2020/07/23 00:37:56 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	main(void)
 	SDLU_start(&display);
 	game_context_initialize(&game_state, &display);
 
-	game_state.board[0 +  0 + 3] = 4;
-	game_state.board[0 +  4 + 3] = 2;
+	// game_state.board[0 +  0 + 3] = 4;
+	// game_state.board[0 +  4 + 3] = 2;
 	game_state.board[0 +  8 + 3] = 2;
-	game_state.board[0 + 12 + 3] = 4;
+	// game_state.board[0 + 12 + 3] = 4;
 
 	while (game_state.active == true)
 	{

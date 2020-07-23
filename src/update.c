@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 20:52:34 by home              #+#    #+#             */
-/*   Updated: 2020/07/23 00:33:59 by home             ###   ########.fr       */
+/*   Updated: 2020/07/23 00:37:00 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	spawn_tiles(int *board)
 	{
 		if (board[i] == 0)
 		{
-			spawn_chance = rand() % 10;
+			spawn_chance = rand() % 20;
 			if (spawn_chance < 2)
 				board[i] = 2;
 			else if (spawn_chance < 3)
