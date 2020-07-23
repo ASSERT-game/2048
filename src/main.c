@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/07/23 00:37:56 by home             ###   ########.fr       */
+/*   Updated: 2020/07/23 00:47:49 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,20 @@ int	main(void)
 
 	// game_state.board[0 +  0 + 3] = 4;
 	// game_state.board[0 +  4 + 3] = 2;
-	game_state.board[0 +  8 + 3] = 2;
+	// game_state.board[0 +  8 + 3] = 2;
 	// game_state.board[0 + 12 + 3] = 4;
+
+	game_state.board[0] = 2;
+	game_state.board[1] = 4;
+	game_state.board[2] = 8;
+	game_state.board[3] = 16;
+	game_state.board[4] = 32;
+	game_state.board[5] = 64;
+	game_state.board[6] = 128;
+	game_state.board[7] = 256;
+	game_state.board[8] = 512;
+	game_state.board[9] = 1024;
+	game_state.board[10] = 2048;
 
 	while (game_state.active == true)
 	{

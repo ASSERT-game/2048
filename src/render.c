@@ -6,11 +6,37 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 02:38:19 by home              #+#    #+#             */
-/*   Updated: 2020/07/22 20:58:05 by home             ###   ########.fr       */
+/*   Updated: 2020/07/23 00:46:30 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "master.h"
+
+void	color_tiles(int val)
+{
+	if (val == 2)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 4)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 8)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 16)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 32)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 64)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 128)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 256)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 512)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 1024)
+		SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	else if (val == 2048)
+		SDL_SetTextureColorMod(game_state->texture, 255, 255, 0);
+}
 
 void	draw_tile(int val, int x, int y, t_display *display, t_game_context *game_state)
 {
@@ -21,8 +47,7 @@ void	draw_tile(int val, int x, int y, t_display *display, t_game_context *game_s
 	dest.w = TILE_SIZE * SCALE;
 	dest.x = (x * SCALE * TILE_SIZE);
 	dest.y = (y * SCALE * TILE_SIZE);
-
-	SDL_SetTextureColorMod(game_state->texture, 125, 188, 198);
+	color_tiles(val);
 	SDL_RenderCopy(display->renderer, game_state->texture, &(game_state->src_rect[TILE]), &dest);
 	// SDL_SetTextureColorMod(game_state->texture, 255, 255, 255);
 
