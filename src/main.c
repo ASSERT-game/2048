@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/07/22 20:20:37 by home             ###   ########.fr       */
+/*   Updated: 2020/07/22 20:37:00 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	game_context_initialize(t_game_context *game_state, t_display *display)
 	game_state->active = true;
 
 	game_state->texture = IMG_LoadTexture(display->renderer, "2048_texture.png");
-	game_state->src_rect = carve__texture();
+	game_state->src_rect = carve_2048_texture();
+
+	if (game_state->texture == NULL)
+		printf("Texture does not exist\n");
 
 	game_state->game_over = false;
 
