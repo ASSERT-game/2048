@@ -21,3 +21,6 @@ Another game, the usual stuff.
 
 ## TimeLog: Thu Jul 23 02:36:05 PDT 2020
 	Play testing! But also then found a bug, will rewrite the update function to be robust...
+
+## TimeLog: Thu Jul 23 21:40:08 PDT 2020
+	Back at it now, give me a few seconds to git push and fix that bug from earlier...
