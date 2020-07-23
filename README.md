@@ -18,3 +18,6 @@ Another game, the usual stuff.
 
 ## TimeLog: Thu Jul 23 01:07:12 PDT 2020
 	There are bugs =[
+
+## TimeLog: Thu Jul 23 02:36:05 PDT 2020
+	Play testing! But also then found a bug, will rewrite the update function to be robust...
