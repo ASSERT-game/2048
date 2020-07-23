@@ -15,3 +15,6 @@ Another game, the usual stuff.
 
 ## TimeLog: Thu Jul 23 00:24:26 PDT 2020
 	Took a break and finding out how to do all four sliding movements with one function was difficult. Tested it also, because it has a lot of edge cases.
+
+## TimeLog: Thu Jul 23 01:07:12 PDT 2020
+	There are bugs =[
