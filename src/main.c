@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/07/22 19:41:59 by home             ###   ########.fr       */
+/*   Updated: 2020/07/22 20:20:37 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,18 @@ int	main(void)
 
 	SDLU_start(&display);
 	game_context_initialize(&game_state, &display);
+
+	game_state.board[0] = 2;
+	game_state.board[4] = 2048;
+	game_state.board[6] = 16;
 	while (game_state.active == true)
 	{
 		process_user_input(&game_state);
 
 		update_game_state(&game_state);
+
+		draw_grid(&game_state, &display);
+		draw_board(&game_state, &display);
 
 		SDL_RenderPresent(display.renderer);
 		SDL_RenderClear(display.renderer);

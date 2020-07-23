@@ -10,6 +10,7 @@ BIN_DIR = bin/
 SRC_NAMES = \
 	carve_texture \
 	game_input \
+	itow \
 	main \
 	render \
 	SDL_initialize \
