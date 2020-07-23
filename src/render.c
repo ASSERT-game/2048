@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 02:38:19 by home              #+#    #+#             */
-/*   Updated: 2020/07/23 01:00:38 by home             ###   ########.fr       */
+/*   Updated: 2020/07/23 02:31:28 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	color_tiles(int val, SDL_Texture *texture)
 {
+	printf("val: %d\n", val);
 	if (val == 2)
 		SDL_SetTextureColorMod(texture, 100, 140, 190);
 	else if (val == 4)

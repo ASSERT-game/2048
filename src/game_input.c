@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 11:30:10 by home              #+#    #+#             */
-/*   Updated: 2020/07/22 21:45:49 by home             ###   ########.fr       */
+/*   Updated: 2020/07/23 01:32:01 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	process_user_input(t_game_context *game_state)
 				game_state->action = UP;
 			else if (e.key.keysym.scancode == SDL_SCANCODE_DOWN)
 				game_state->action = DOWN;
+
+			if (e.key.keysym.scancode == SDL_SCANCODE_U)
+				memcpy(game_state->board, game_state->prev_board, sizeof(game_state->board));
 		}
 	}
 }

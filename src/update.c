@@ -6,13 +6,13 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 20:52:34 by home              #+#    #+#             */
-/*   Updated: 2020/07/23 00:37:00 by home             ###   ########.fr       */
+/*   Updated: 2020/07/23 02:35:02 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "master.h"
 
-void	slide_line(int	*board, int action, int row_offset, int col_offset, int delta)
+void	slide_line(int	*board, int *lock, int action, int row_offset, int col_offset, int delta)
 {
 	int	i;
 	int	j;
@@ -32,9 +32,10 @@ void	slide_line(int	*board, int action, int row_offset, int col_offset, int delt
 		while ((0 <= j - delta && j - delta < 4 * abs(delta)) && board[offset + j - delta] == 0)
 			j -= delta;
 
-		if (j > 0 && board[offset + i] == board[offset + j - delta] && !(action == RIGHT && j == 3))
+		if ((j > 0 || action == RIGHT) && board[offset + i] == board[offset + j - delta] && !(action == RIGHT && j == 3) && lock[offset + j - delta] == 0)
 		{
 			board[offset + j - delta] += board[offset + i];
+			lock[offset + j - delta] = 1;
 			board[offset + i] = 0;
 		}
 		else if (j >= 0 && board[offset + j] == 0 && board[offset + i] != 0)
@@ -46,7 +47,7 @@ void	slide_line(int	*board, int action, int row_offset, int col_offset, int delt
 	}
 }
 
-void	slide_board(int	*board, int action)
+void	slide_board(int *board, int *lock, int action)
 {
 	int	delta;
 	int	row_active;
@@ -76,10 +77,10 @@ void	slide_board(int	*board, int action)
 		row_active = 1;
 	}
 
-	slide_line(board, action, 0 * row_active, 0 * col_active, delta);
-	slide_line(board, action, 1 * row_active, 1 * col_active, delta);
-	slide_line(board, action, 2 * row_active, 2 * col_active, delta);
-	slide_line(board, action, 3 * row_active, 3 * col_active, delta);
+	slide_line(board, lock, action, 0 * row_active, 0 * col_active, delta);
+	slide_line(board, lock, action, 1 * row_active, 1 * col_active, delta);
+	slide_line(board, lock, action, 2 * row_active, 2 * col_active, delta);
+	slide_line(board, lock, action, 3 * row_active, 3 * col_active, delta);
 }
 
 void	spawn_tiles(int *board)
@@ -107,7 +108,9 @@ void	update_game_state(t_game_context *game_state)
 
 	if (game_state->action != NONE)
 	{
-		slide_board(game_state->board, game_state->action);
+		bzero(game_state->lock, sizeof(game_state->lock));
+		memcpy(game_state->prev_board, game_state->board, sizeof(game_state->prev_board));
+		slide_board(game_state->board, game_state->lock, game_state->action);
 		spawn_tiles(game_state->board);
 	}
 

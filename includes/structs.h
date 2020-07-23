@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 03:05:42 by home              #+#    #+#             */
-/*   Updated: 2020/07/22 19:39:25 by home             ###   ########.fr       */
+/*   Updated: 2020/07/23 02:33:37 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ typedef struct	s_game_context
 
 	int			action;
 
+	int			lock[16];
+
+	int			prev_board[16];
 	int			board[16];
 }				t_game_context;
 
