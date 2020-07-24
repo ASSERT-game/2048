@@ -24,3 +24,6 @@ Another game, the usual stuff.
 
 ## TimeLog: Thu Jul 23 21:40:08 PDT 2020
 	Back at it now, give me a few seconds to git push and fix that bug from earlier...
+
+## TimeLog: Fri Jul 24 00:44:11 PDT 2020
+	I had finished earlier but played until I was able to overflow the 2048 block. Really fun game.

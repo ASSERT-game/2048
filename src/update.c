@@ -6,81 +6,155 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 20:52:34 by home              #+#    #+#             */
-/*   Updated: 2020/07/23 02:35:02 by home             ###   ########.fr       */
+/*   Updated: 2020/07/24 00:43:47 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "master.h"
 
-void	slide_line(int	*board, int *lock, int action, int row_offset, int col_offset, int delta)
+void	slide_left(int *board, int *lock, int offset)
 {
-	int	i;
-	int	j;
-	int	offset;
+	int i;
+	int j;
 
 	i = 0;
-
-	if (action == DOWN)
-		i = 12;
-	else if (action == RIGHT)
-		i = 3;
-
-	offset =  row_offset * 4 + col_offset;
-	while (0 <= i && i < 4 * abs(delta))
+	while (i <= 3)
 	{
-		j = i;
-		while ((0 <= j - delta && j - delta < 4 * abs(delta)) && board[offset + j - delta] == 0)
-			j -= delta;
+		j = i - 1;
+		while (j >= 0 && board[j + offset] == 0)
+			j--;
 
-		if ((j > 0 || action == RIGHT) && board[offset + i] == board[offset + j - delta] && !(action == RIGHT && j == 3) && lock[offset + j - delta] == 0)
+		if (j >= 0 && board[i + offset] == board[j + offset] && lock[j + offset] == 0)
 		{
-			board[offset + j - delta] += board[offset + i];
-			lock[offset + j - delta] = 1;
-			board[offset + i] = 0;
+			board[j + offset] += board[i + offset];
+			board[i + offset] = 0;
+			lock[j + offset] = 1;
 		}
-		else if (j >= 0 && board[offset + j] == 0 && board[offset + i] != 0)
+		else if (board[j + 1 + offset] == 0)
 		{
-			board[offset + j] = board[offset + i];
-			board[offset + i] = 0;
+			board[j + 1 + offset] = board[i + offset];
+			board[i + offset] = 0;
 		}
-		i += delta;
+		i++;
 	}
 }
 
+void	slide_right(int *board, int *lock, int offset)
+{
+	int i;
+	int j;
+
+	i = 3;
+	while (i >= 0)
+	{
+		j = i + 1;
+		while (j <= 3 && board[j + offset] == 0)
+			j++;
+
+		if (j <= 3 && board[i + offset] == board[j + offset] && lock[j + offset] == 0)
+		{
+			board[j + offset] += board[i + offset];
+			board[i + offset] = 0;
+			lock[j + offset] = 1;
+		}
+		else if (board[j - 1 + offset] == 0)
+		{
+			board[j - 1 + offset] = board[i + offset];
+			board[i + offset] = 0;
+		}
+		i--;
+	}
+}
+
+void	slide_down(int *board, int *lock, int offset)
+{
+	int i;
+	int j;
+
+	i = 12;
+	while (i >= 0)
+	{
+		j = i + 4;
+		while (j <= 12 && board[j + offset] == 0)
+			j += 4;
+
+		if (j <= 12 && board[i + offset] == board[j + offset] && lock[j + offset] == 0)
+		{
+			board[j + offset] += board[i + offset];
+			board[i + offset] = 0;
+			lock[j + offset] = 1;
+		}
+		else if (board[j - 4 + offset] == 0)
+		{
+			board[j - 4 + offset] = board[i + offset];
+			board[i + offset] = 0;
+		}
+		i -= 4;
+	}
+}
+
+void	slide_up(int *board, int *lock, int offset)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i <= 12)
+	{
+		j = i - 4;
+		while (j >= 0 && board[j + offset] == 0)
+			j -= 4;
+
+		if (j >= 0 && board[i + offset] == board[j + offset] && lock[j + offset] == 0)
+		{
+			board[j + offset] += board[i + offset];
+			board[i + offset] = 0;
+			lock[j + offset] = 1;
+		}
+		else if (board[j + 4 + offset] == 0)
+		{
+			board[j + 4 + offset] = board[i + offset];
+			board[i + offset] = 0;
+		}
+		i += 4;
+	}
+}
+
+/*
+** Maybe if I get the time I can combine these functions.
+** These version are more robust and I am much more confident that
+** in their behavior and functionality. But I need to test and validate them.
+*/
 void	slide_board(int *board, int *lock, int action)
 {
-	int	delta;
-	int	row_active;
-	int	col_active;
-
-	delta = 0;
-	row_active = 0;
-	col_active = 0;
+	if (action == RIGHT)
+	{
+		slide_right(board, lock,  0);
+		slide_right(board, lock,  4);
+		slide_right(board, lock,  8);
+		slide_right(board, lock, 12);
+	}
 	if (action == LEFT)
 	{
-		delta = 1;
-		row_active = 1;
+		slide_left(board, lock,  0);
+		slide_left(board, lock,  4);
+		slide_left(board, lock,  8);
+		slide_left(board, lock, 12);
 	}
-	else if (action == UP)
+	if (action == DOWN)
 	{
-		delta = 4;
-		col_active = 1;
+		slide_down(board, lock, 0);
+		slide_down(board, lock, 1);
+		slide_down(board, lock, 2);
+		slide_down(board, lock, 3);
 	}
-	else if (action == DOWN)
+	if (action == UP)
 	{
-		delta = -4;
-		col_active = 1;
+		slide_up(board, lock, 0);
+		slide_up(board, lock, 1);
+		slide_up(board, lock, 2);
+		slide_up(board, lock, 3);
 	}
-	else if (action == RIGHT)
-	{
-		delta = -1;
-		row_active = 1;
-	}
-
-	slide_line(board, lock, action, 0 * row_active, 0 * col_active, delta);
-	slide_line(board, lock, action, 1 * row_active, 1 * col_active, delta);
-	slide_line(board, lock, action, 2 * row_active, 2 * col_active, delta);
-	slide_line(board, lock, action, 3 * row_active, 3 * col_active, delta);
 }
 
 void	spawn_tiles(int *board)
@@ -93,7 +167,7 @@ void	spawn_tiles(int *board)
 	{
 		if (board[i] == 0)
 		{
-			spawn_chance = rand() % 20;
+			spawn_chance = rand() % 50;
 			if (spawn_chance < 2)
 				board[i] = 2;
 			else if (spawn_chance < 3)
