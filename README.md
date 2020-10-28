@@ -3,7 +3,7 @@
 This is a 2048 recreation made in C with the help of the SDL2.0 graphics library. All assets were made by hand with the pixel editor [aseprite](https://www.aseprite.org/). Color for each tile is changed by an SDL function. This project was made after having made several other SDL projects ([chess](https://github.com/ASSERT-game/chess), [flappy bird](https://github.com/ASSERT-game/flappy_bird), and [pacman](https://github.com/ASSERT-game/pac_man)). I wanted to see how much I had improved and the progress I had made in coding. Below you will see a Timelog that I recorded to have a record of my progress. This was possible because of practice and having created tools like [SDL_2D_init](https://github.com/MrColour/SDL_2D_init).
 
 <br>
-<img align="top" height="250" src="https://github.com/ASSERT-game/2048/tree/master/resources/2048_gameplay.gif" />
+<img align="top" height="500" src="https://github.com/ASSERT-game/2048/blob/master/resources/2048_gameplay.gif" />
 <br>
 
 
